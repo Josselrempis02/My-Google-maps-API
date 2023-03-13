@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Google Maps</title>
+    <style>
+        /* Set the size of the div element that contains the map */
+    #map {
+    height: 400px; /* The height is 400 pixels */
+    width: 100%; /* The width is the width of the web page */
+    }
+
+    </style>
+</head>
+<body>
+    <h1>My Google Map</h1>
+    <div id="map"></div>
+    <script>
+        function initMap(){
+            // Maps options
+            var options = {
+                zoom:4,
+                center:{ lat: 12.8797, lng: 121.7740 }
+            
+            }
+            // New maps
+            var map = new google.maps.Map(document.getElementById('map'), options);
+
+            // Add marker
+            var marker = new google.maps.Marker({
+                position:{lat:14.6959,lng:121.1217},
+                map:map,
+                icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+            });
+
+            var infoWindow = new google.maps.InfoWindow({
+                content:'<h1>San Mateo rizal</h1>'
+            });
+
+            marker.addListener('click', function(){
+                infoWindow.open(map,marker);
+            })
+        }
+    </script>
+     <script
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5B3YZ2hL0d8zN49iJafBULv7pPmyiRsI&callback=initMap&v=weekly"
+     defer
+   ></script>
+</body>
+</html>
